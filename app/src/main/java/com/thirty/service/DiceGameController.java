@@ -138,113 +138,37 @@ public class DiceGameController {
      * @param chosenPoints being the amount of points desired.
      */
     private void calculateDiceCombination(int[] dice, int amountOfDice, int chosenPoints) {
-        if (!lowDiceCalculation) {
-            chosenGamePoint = chosenPoints;
-        }
+
         // If all dices add up to the chosen point, break entire function.
         if (amountOfDice == 6) {
-            if (checkIfAllDicesMakeTheScore(dice, chosenPoints)) return;
+            if (dice[0] + dice[1] + dice[2] + dice[3] + dice[4] + dice[5] == chosenPoints) {
+                roundScoreCounter += 1;
+                allDicePointsCollected = true;
+                return;
+            }
         }
 
         // Calculates if 1 make the score
         if (amountOfDice == 1) {
-            checkIfOneDiceIsEnough(dice, amountOfDice, chosenPoints);
-        }
-
-        // Calculates if 2 Dices make the score
-        if (amountOfDice == 2) {
-            calculate2Dices(dice, amountOfDice, chosenPoints);
-        }
-
-        // Calculates if 3 Dices make the score
-        if (amountOfDice == 3) {
-            calculate3Dices(dice, amountOfDice, chosenPoints);
-        }
-
-        // Calculates if 4 Dices make the score
-        if (amountOfDice == 4) {
-            calculate4Dices(dice, amountOfDice, chosenPoints);
-        }
-
-        // Calculates if 5 dices make the score
-        if (amountOfDice == 5) {
-            calculate5Dices(dice, amountOfDice, chosenPoints);
-        }
-    }
-
-    /**
-     * Checks if All Dices together make the score, returns true if so.
-     *
-     * @param dice         being the DiceList.
-     * @param chosenPoints being the chosen points to calculate towards
-     * @return
-     */
-    private boolean checkIfAllDicesMakeTheScore(int[] dice, int chosenPoints) {
-        if (dice[0] + dice[1] + dice[2] + dice[3] + dice[4] + dice[5] == chosenPoints) {
-            roundScoreCounter += 1;
-            allDicePointsCollected = true;
-            return true;
-        }
-        return false;
-    }
-
-    /**
-     * Checks if any of the 6 dices sum of to the score
-     *
-     * @param dice         being the dicelist.
-     * @param amountOfDice of dice combined.
-     * @param chosenPoints being the points to count towards
-     */
-    private void checkIfOneDiceIsEnough(int[] dice, int amountOfDice, int chosenPoints) {
-        for (int i = 0; i < dice.length; i++) {
-            if (dice[i] == chosenPoints) {
-                // SCORE
-
-                collectedRoundPoint += chosenPoints;
-                dice[i] = 0;
-                roundScoreCounter += 1;
-                calculateDiceCombination(dice, amountOfDice, chosenPoints);
-            }
-        }
-    }
-
-    /**
-     * Calculates dices of 5 to see if 2 can sum up to the score.
-     *
-     * @param dice         being the dicelist.
-     * @param amountOfDice of dice combined.
-     * @param chosenPoints being the points to count towards
-     */
-    private void calculate2Dices(int[] dice, int amountOfDice, int chosenPoints) {
-        for (int i = 0; i < dice.length; i++) {
-            for (int j = i + 1; j < dice.length; j++) {
-                if (dice[i] + dice[j] == chosenPoints) {
-                    dice[i] = 0;
-                    dice[j] = 0;
+            for (int i = 0; i < dice.length; i++) {
+                if (dice[i] == chosenPoints) {
+                    // SCORE
 
                     collectedRoundPoint += chosenPoints;
+                    dice[i] = 0;
                     roundScoreCounter += 1;
                     calculateDiceCombination(dice, amountOfDice, chosenPoints);
                 }
             }
         }
-    }
 
-    /**
-     * Calculates dices of 3 to see if 5 can sum up to the score.
-     *
-     * @param dice         being the dicelist.
-     * @param amountOfDice of dice combined.
-     * @param chosenPoints being the points to count towards
-     */
-    private void calculate3Dices(int[] dice, int amountOfDice, int chosenPoints) {
-        for (int i = 0; i < dice.length - 2; i++) {
-            for (int j = i + 1; j < dice.length - 1; j++) {
-                for (int k = j + 1; k < dice.length; k++) {
-                    if (dice[i] + dice[j] + dice[k] == chosenPoints) {
+        // Calculates if 2 Dices make the score
+        if (amountOfDice == 2) {
+            for (int i = 0; i < dice.length; i++) {
+                for (int j = i + 1; j < dice.length; j++) {
+                    if (dice[i] + dice[j] == chosenPoints) {
                         dice[i] = 0;
                         dice[j] = 0;
-                        dice[k] = 0;
 
                         collectedRoundPoint += chosenPoints;
                         roundScoreCounter += 1;
@@ -253,25 +177,16 @@ public class DiceGameController {
                 }
             }
         }
-    }
 
-    /**
-     * Calculates dices of 4 to see if 5 can sum up to the score.
-     *
-     * @param dice         being the dicelist.
-     * @param amountOfDice of dice combined.
-     * @param chosenPoints being the points to count towards
-     */
-    private void calculate4Dices(int[] dice, int amountOfDice, int chosenPoints) {
-        for (int i = 0; i < dice.length - 3; i++) {
-            for (int j = i + 1; j < dice.length - 2; j++) {
-                for (int k = j + 1; k < dice.length - 1; k++) {
-                    for (int l = k + 1; l < dice.length; l++) {
-                        if (dice[i] + dice[j] + dice[k] + dice[l] == chosenPoints) {
+        // Calculates if 3 Dices make the score
+        if (amountOfDice == 3) {
+            for (int i = 0; i < dice.length - 2; i++) {
+                for (int j = i + 1; j < dice.length - 1; j++) {
+                    for (int k = j + 1; k < dice.length; k++) {
+                        if (dice[i] + dice[j] + dice[k] == chosenPoints) {
                             dice[i] = 0;
                             dice[j] = 0;
                             dice[k] = 0;
-                            dice[l] = 0;
 
                             collectedRoundPoint += chosenPoints;
                             roundScoreCounter += 1;
@@ -281,31 +196,47 @@ public class DiceGameController {
                 }
             }
         }
-    }
 
-    /**
-     * Calculates dices of 5 to see if 5 can sum up to the score.
-     *
-     * @param dice         being the dicelist.
-     * @param amountOfDice of dice combined.
-     * @param chosenPoints being the points to count towards
-     */
-    private void calculate5Dices(int[] dice, int amountOfDice, int chosenPoints) {
-        for (int i = 0; i < dice.length - 4; i++) {
-            for (int j = i + 1; j < dice.length - 3; j++) {
-                for (int k = j + 1; k < dice.length - 2; k++) {
-                    for (int l = k + 1; l < dice.length - 1; l++) {
-                        for (int p = l + 1; p < dice.length; p++) {
-                            if (dice[i] + dice[j] + dice[k] + dice[l] + dice[p] == chosenPoints) {
+        // Calculates if 4 Dices make the score
+        if (amountOfDice == 4) {
+            for (int i = 0; i < dice.length - 3; i++) {
+                for (int j = i + 1; j < dice.length - 2; j++) {
+                    for (int k = j + 1; k < dice.length - 1; k++) {
+                        for (int l = k + 1; l < dice.length; l++) {
+                            if (dice[i] + dice[j] + dice[k] + dice[l] == chosenPoints) {
                                 dice[i] = 0;
                                 dice[j] = 0;
                                 dice[k] = 0;
                                 dice[l] = 0;
-                                dice[p] = 0;
 
                                 collectedRoundPoint += chosenPoints;
                                 roundScoreCounter += 1;
                                 calculateDiceCombination(dice, amountOfDice, chosenPoints);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        // Calculates if 5 dices make the score.
+        if (amountOfDice == 5) {
+            for (int i = 0; i < dice.length - 4; i++) {
+                for (int j = i + 1; j < dice.length - 3; j++) {
+                    for (int k = j + 1; k < dice.length - 2; k++) {
+                        for (int l = k + 1; l < dice.length - 1; l++) {
+                            for (int p = l + 1; p < dice.length; p++) {
+                                if (dice[i] + dice[j] + dice[k] + dice[l] + dice[p] == chosenPoints) {
+                                    dice[i] = 0;
+                                    dice[j] = 0;
+                                    dice[k] = 0;
+                                    dice[l] = 0;
+                                    dice[p] = 0;
+
+                                    collectedRoundPoint += chosenPoints;
+                                    roundScoreCounter += 1;
+                                    calculateDiceCombination(dice, amountOfDice, chosenPoints);
+                                }
                             }
                         }
                     }
