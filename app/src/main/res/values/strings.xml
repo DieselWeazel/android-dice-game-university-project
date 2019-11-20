@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Thirty</string>
+
+    <string-array name="desired_Points">
+        <item>Low Point Score, 1 to 3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+    </string-array>
+    <string name="current_point_message">Your total score is: </string>
+    <string name="point_low">low</string>
+    <string name="point_4">4</string>
+    <string name="point_5">5</string>
+    <string name="point_6">6</string>
+    <string name="point_7">7</string>
+    <string name="point_8">8</string>
+    <string name="point_9">9</string>
+    <string name="point_10">10</string>
+    <string name="point_11">11</string>
+    <string name="point_12">12</string>
+</resources>

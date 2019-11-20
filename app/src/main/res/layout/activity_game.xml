@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GameActivity">
+
+    <ImageButton
+        android:id="@+id/button_dice_1"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="30dp"
+        android:contentDescription="Dice 1"
+        android:src="@drawable/grey1" />
+
+    <ImageButton
+        android:id="@+id/button_dice_2"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:layout_alignTop="@+id/button_dice_1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="0dp"
+        android:contentDescription="Dice 2"
+        android:src="@drawable/grey2" />
+
+    <ImageButton
+        android:id="@+id/button_dice_3"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:layout_alignTop="@+id/button_dice_1"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="18dp"
+        android:contentDescription="Dice 3"
+        android:src="@drawable/grey3" />
+
+    <ImageButton
+        android:id="@+id/button_dice_4"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="120dp"
+        android:contentDescription="Dice 4"
+        android:src="@drawable/grey4" />
+
+    <ImageButton
+        android:id="@+id/button_dice_5"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:layout_alignStart="@+id/button_dice_2"
+        android:layout_alignTop="@+id/button_dice_4"
+        android:layout_marginStart="7dp"
+        android:layout_marginTop="0dp"
+        android:contentDescription="Dice 5"
+        android:src="@drawable/grey5" />
+
+    <ImageButton
+        android:id="@+id/button_dice_6"
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:layout_alignTop="@+id/button_dice_4"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="17dp"
+        android:contentDescription="Dice 6"
+        android:src="@drawable/grey6" />
+
+    <TextView
+        android:id="@+id/points_text_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="225dp"
+        android:layout_width="200dp"
+        android:layout_height="30dp" />
+
+    <TextView
+        android:id="@+id/select_points_message"
+        android:layout_below="@id/points_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="5dp"
+        android:textSize="13dp"
+        android:text="Select Points:"/>
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_below="@id/select_points_message"
+        android:layout_width="173dp"
+        android:layout_height="30dp"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:textColor="@color/colorAccent"
+        android:background="@android:color/holo_green_light" />
+
+
+
+
+    <Button
+        android:id="@+id/button_throwdice"
+        android:layout_below="@id/spinner"
+        android:layout_width="173dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:text="Throw Dice"
+        android:textSize="20sp"
+        android:background="@android:color/holo_green_light"/>
+
+    <Button
+        android:id="@+id/button_make_selection"
+        android:layout_below="@id/button_throwdice"
+        android:layout_width="229dp"
+        android:layout_height="64dp"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:layout_centerInParent="true"
+        android:text="Gather Your Points"
+        android:textSize="16sp"
+        android:background="@android:color/holo_green_light"/>
+
+</RelativeLayout>
